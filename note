@@ -1,0 +1,326 @@
+"
+var count = "+EncodeJavaScript(GetReferenceNewsByCreatedBy.Count)+";
+
+function nextClick()
+{
+    var currentPage = $('.ListNavigation_CurrentPageNumber').html();
+    if(parseInt(count) == parseInt(currentPage))
+    {
+        document.getElementsByClassName('ListNavigation_PageNumber')[0].click();
+
+
+
+    }
+    else
+    {
+        $('.ListNavigation_Next').click();
+    }
+}
+
+function previousClick()
+{  
+    var currentPage = $('.ListNavigation_CurrentPageNumber').html();
+    counter=count-2;
+    if(parseInt('1') == parseInt(currentPage))
+    {
+        
+       document.getElementsByClassName('ListNavigation_PageNumber')[counter].click();
+      
+
+    }
+    
+    else
+    {
+    $('.ListNavigation_Previous').click(); 
+    }
+
+   
+}
+
+
+function autoClickN()
+{  
+    var i = 1;
+    var timerId = setInterval(function() {
+     i++; 
+    
+    if (i==count) 
+    {    
+         document.getElementsByClassName('ListNavigation_PageNumber')[0].click();
+         
+         i=1;
+         
+
+    }
+else{
+$('.ListNavigation_Next').click();
+   
+}
+
+    }, 10000);
+}
+
+
+autoClickN();
+
+$('.prev').live('click', function(){
+    //$('.ListNavigation_Previous').click();
+    previousClick();
+});
+
+$('.next').live('click', function(){
+    nextClick();
+    //$('.ListNavigation_Next').click();
+});
+
+
+
+
+var taskCount = "+ EncodeJavaScript(GetUserExts.List.Current.UserExt.TaskCount) +";
+
+
+ /* var color = 'green';
+    if(taskCount > 0 && taskCount < 4 )
+        {
+            color = 'yellow';
+        }else  if(taskCount > 3 && taskCount < 8 )
+        {
+            color = 'orange';
+        }else  if(taskCount > 7 && taskCount < 11)
+        {
+            color = 'red';
+        }
+        else if(taskCount == 0)
+        {
+            color = 'green';
+        }
+
+        else 
+        {
+            color = 'red';
+        }
+
+
+    
+
+  var ifrm2 = document.createElement('div');
+    ifrm2.className = 'c100 p100 '+color;   
+
+  var ifrm3 = document.createElement('span');
+           ifrm3.innerHTML = taskCount;
+           
+           var ifrm4a = document.createElement('div');
+           ifrm4a.className = 'slice';
+           
+           var ifrm4 = document.createElement('div');
+           ifrm4.className = 'bar';
+           
+           var ifrm5 = document.createElement('div');
+           ifrm5.className = 'fill';
+           
+           
+          ifrm2.appendChild(ifrm3);
+          ifrm2.appendChild(ifrm4a);
+          ifrm4a.appendChild(ifrm4);
+          ifrm4a.appendChild(ifrm5);
+document.getElementsByClassName('IsuContainer')[0].appendChild(ifrm2);
+*/
+var spfCallsCnt = "+ spfCallsCnt +";
+var empCallsCnt = "+ GetEmpCalls.List.Current.Count +";
+
+ var ifrmS2 = document.createElement('div');
+    ifrmS2.className = 'c100 p0 green'  
+
+  var ifrmS3 = document.createElement('span');
+           ifrmS3.innerHTML = spfCallsCnt;
+           
+           var ifrmS4a = document.createElement('div');
+           ifrmS4a.className = 'slice';
+           
+           var ifrmS4 = document.createElement('div');
+           ifrmS4.className = 'bar';
+           
+           var ifrmS5 = document.createElement('div');
+           ifrmS5.className = 'fill';
+           
+           
+          ifrmS2.appendChild(ifrmS3);
+          ifrmS2.appendChild(ifrmS4a);
+          ifrmS4a.appendChild(ifrmS4);
+          ifrmS4a.appendChild(ifrmS5);
+document.getElementsByClassName('spfCalls')[0].appendChild(ifrmS2);
+
+ var ifrmE2 = document.createElement('div');
+    ifrmE2.className = 'c100 p0 green'  
+
+  var ifrmE3 = document.createElement('span');
+           ifrmE3.innerHTML = empCallsCnt;
+           
+           var ifrmE4a = document.createElement('div');
+           ifrmE4a.className = 'slice';
+           
+           var ifrmE4 = document.createElement('div');
+           ifrmE4.className = 'bar';
+           
+           var ifrmE5 = document.createElement('div');
+           ifrmE5.className = 'fill';
+           
+           
+          ifrmE2.appendChild(ifrmE3);
+          ifrmE2.appendChild(ifrmE4a);
+          ifrmE4a.appendChild(ifrmE4);
+          ifrmE4a.appendChild(ifrmE5);
+document.getElementsByClassName('empCalls')[0].appendChild(ifrmE2);
+
+/*var loyaltyAcceptedCnt = " + EncodeJavaScript(loyalityAcceptedCount) + ";
+var loyaltyNotAcceptedCnt = " + EncodeJavaScript(loyalityNotAcceptedCount) + ";
+
+var ifrmLA2 = document.createElement('div');
+ifrmLA2.className = 'c100 p0 green';
+
+var ifrmLA3 = document.createElement('span');
+ifrmLA3.innerHTML = loyaltyAcceptedCnt;
+           
+var ifrmLA4a = document.createElement('div');
+ifrmLA4a.className = 'slice';
+           
+var ifrmLA4 = document.createElement('div');
+ifrmLA4.className = 'bar';
+           
+var ifrmLA5 = document.createElement('div');
+ifrmLA5.className = 'fill';
+ 
+ifrmLA2.appendChild(ifrmLA3);
+ifrmLA2.appendChild(ifrmLA4a);
+ifrmLA4a.appendChild(ifrmLA4);
+ifrmLA4a.appendChild(ifrmLA5);
+document.getElementsByClassName('loyaltyAcceptedCnt')[0].appendChild(ifrmLA2);
+
+var ifrmLN2 = document.createElement('div');
+ifrmLN2.className = 'c100 p0 green';
+
+var ifrmLN3 = document.createElement('span');
+ifrmLN3.innerHTML = loyaltyNotAcceptedCnt;
+           
+var ifrmLN4a = document.createElement('div');
+ifrmLN4a.className = 'slice';
+           
+var ifrmLN4 = document.createElement('div');
+ifrmLN4.className = 'bar';
+           
+var ifrmLN5 = document.createElement('div');
+ifrmLN5.className = 'fill';
+ 
+ifrmLN2.appendChild(ifrmLN3);
+ifrmLN2.appendChild(ifrmLN4a);
+ifrmLN4a.appendChild(ifrmLN4);
+ifrmLN4a.appendChild(ifrmLN5);
+document.getElementsByClassName('loyaltyNotAcceptedCnt')[0].appendChild(ifrmLN2);*/
+
+/*var KPIDaily = " + EncodeJavaScript(KPIValues.KPIDaily) + ";
+var KPIMonthly = " + EncodeJavaScript(KPIValues.KPIMonthly) + ";
+var KPIColor;
+
+if (KPIDaily < 86) {
+    KPIColor = 'red';
+} else if (KPIDaily > 85 && KPIDaily < 100) {
+    KPIColor = 'orange';
+} else if (KPIDaily > 99) {
+    KPIColor = 'green';
+}
+
+var ifrmKPIDaily = document.createElement('div');
+ifrmKPIDaily.className = 'c100 p' + KPIDaily + ' ' + KPIColor;
+
+var ifrmKPIDaily2 = document.createElement('span');
+ifrmKPIDaily2.innerHTML = KPIDaily + '%';
+ifrmKPIDaily2.style.marginLeft = '7px';
+           
+var ifrmKPIDaily3 = document.createElement('div');
+ifrmKPIDaily3.className = 'slice';
+           
+var ifrmKPIDaily4 = document.createElement('div');
+ifrmKPIDaily4.className = 'bar';
+           
+var ifrmKPIDaily5 = document.createElement('div');
+ifrmKPIDaily5.className = 'fill';
+ 
+ifrmKPIDaily.appendChild(ifrmKPIDaily2);
+ifrmKPIDaily.appendChild(ifrmKPIDaily3);
+ifrmKPIDaily3.appendChild(ifrmKPIDaily4);
+ifrmKPIDaily3.appendChild(ifrmKPIDaily5);
+document.getElementsByClassName('KPIDailyCount')[0].appendChild(ifrmKPIDaily);
+
+if (KPIMonthly < 86) {
+    KPIColor = 'red';
+} else if (KPIMonthly > 85 && KPIMonthly < 100) {
+    KPIColor = 'orange';
+} else if (KPIMonthly > 99) {
+    KPIColor = 'green';
+}
+
+var ifrmKPIMonthly = document.createElement('div');
+ifrmKPIMonthly.className = 'c100 p' + KPIMonthly + ' ' + KPIColor;
+
+var ifrmKPIMonthly2 = document.createElement('span');
+ifrmKPIMonthly2.innerHTML = KPIMonthly + '%';
+ifrmKPIMonthly2.style.marginLeft = '7px';
+           
+var ifrmKPIMonthly3 = document.createElement('div');
+ifrmKPIMonthly3.className = 'slice';
+           
+var ifrmKPIMonthly4 = document.createElement('div');
+ifrmKPIMonthly4.className = 'bar';
+           
+var ifrmKPIMonthly5 = document.createElement('div');
+ifrmKPIMonthly5.className = 'fill';
+ 
+ifrmKPIMonthly.appendChild(ifrmKPIMonthly2);
+ifrmKPIMonthly.appendChild(ifrmKPIMonthly3);
+ifrmKPIMonthly3.appendChild(ifrmKPIMonthly4);
+ifrmKPIMonthly3.appendChild(ifrmKPIMonthly5);
+document.getElementsByClassName('KPIMonthlyCount')[0].appendChild(ifrmKPIMonthly);
+*/
+
+$(document).ready(function(){
+var myPermission = "+EncodeJavaScript(isQueuePermited)+";
+var GmfctnPermission = "+EncodeJavaScript(isGmfctnPermitted)+";
+function prepareFrameAuth() 
+    {        
+        var ifrmWidth = $('[id$=QmaticFrame]').width();
+        var ifrm = document.createElement('iframe');
+        ifrm.setAttribute('src', '"+EncodeJavaScript(Site.SuoURLAuthorisation)+"');
+        ifrm.style.width = ifrmWidth  + 'px';
+        ifrm.style.height = '180px';
+        $('[id$=QmaticFrame]').append(ifrm);
+    }
+
+function prepareFrame() 
+    {      
+        var ifrmWidth = $('[id$=QmaticFrame]').width();
+        var ifrm2 = document.createElement('iframe');
+        ifrm2.setAttribute('src', '"+EncodeJavaScript(Site.SuoURL)+"');
+        ifrm2.style.width = '95%';
+        ifrm2.style.height = '99%';
+        $('[id$=QmaticFrame]').removeClass();
+        $('[id$=QmaticFrame]').replaceWith(ifrm2);
+    }
+
+function addGamification() 
+    {        
+        var ifrm = document.createElement('iframe');
+        ifrm.setAttribute('src', '"+EncodeJavaScript(GamificationURL)+"');
+        ifrm.style.width = '100%';
+        ifrm.style.height = '100%';
+        $('[id$=GmfctnFrame]').append(ifrm);
+    }
+    
+    if(myPermission==1){
+    prepareFrameAuth();      
+    setTimeout(function(){ prepareFrame() }, 1000);}
+
+    if(GmfctnPermission==1){
+    addGamification(); }
+});
+
+"
