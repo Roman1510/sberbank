@@ -1,0 +1,72 @@
+"
+var socket = new WebSocket(""ws://localhost:9090/ws"");
+socket.onopen = function() {
+};
+
+socket.onmessage = function(event) {
+  
+    var fullResp = JSON.parse(event.data);
+    if(fullResp.data)
+    { 
+        var dataObj = JSON.parse(fullResp.data);
+        if(dataObj.state)
+        {
+            document.getElementById('"+CardStatus_Input.Id+"').value=dataObj.state;
+            document.getElementById('"+Filling.Id+"').click();
+        }
+        else if(dataObj.iin)
+        {
+            document.getElementById('"+IIN_Input.Id+"').value=dataObj.iin;
+            document.getElementById('"+FNAME_Input.Id+"').value=dataObj.fname;
+            document.getElementById('"+LNAME_Input.Id+"').value=dataObj.lname;
+            document.getElementById('"+MNAME_Input.Id+"').value=dataObj.sname;
+            document.getElementById('"+ISSUER_Input.Id+"').value=dataObj.issuer;
+            document.getElementById('"+DOCNO_Input.Id+"').value=dataObj.docnum;
+            document.getElementById('"+BIRTHPLACE_Input.Id+"').value=dataObj.bplace;
+            document.getElementById('"+CITIZEN_Input.Id+"').value=dataObj.citizen;
+            document.getElementById('"+SigStatus_Input.Id+"').value=dataObj.SIG_STATUS;
+            document.getElementById('"+FIOLATIN_Input.Id+"').value=dataObj.mrzln + ' ' + dataObj.mrzfn;
+            var id_tex = $('.Imgtext>input')[0].getAttribute('id');
+                             
+            var str1 = dataObj.valid_from.replace(""."",""-"");      
+            document.getElementById('"+STARTDATE_Input.Id+"').value=str1.replace(""."",""-"");
+            var str2 = dataObj.valid_to.replace(""."",""-"");      
+            document.getElementById('"+ENDDATE_Input.Id+"').value=str2.replace(""."",""-"");
+
+            document.getElementById(id_tex).setAttribute('value',dataObj.photo);
+            var str = dataObj.bdate.replace(""."",""-"");      
+            document.getElementById('"+BDATE_Input.Id+"').value=str.replace(""."",""-"");
+
+            document.getElementById('"+Filling2.Id+"').click();
+        }
+        else
+        {
+            document.getElementById('"+CardStatus_Input.Id+"').value=""card_not_present"";
+            document.getElementById('"+Filling.Id+"').click();
+        }
+             
+    }
+    else{
+        document.getElementById('"+CardStatus_Input.Id+"').value=""card_not_present"";
+        document.getElementById('"+Filling.Id+"').click();
+    }
+};
+
+function go() {
+    socket.send('{""reqId"":""123"", ""command"":""read""}');
+}
+
+function go2() {
+     
+     socket.send('{""reqId"":""123"", ""command"":""readWithPhoto""}');
+}
+
+function go3() {
+     
+     socket.send('{""reqId"":""123"", ""command"":""getState""}');
+}
+
+
+
+
+"
